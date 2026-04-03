@@ -2,4 +2,4 @@
 .Rhistory
 __pycache__/
 *.py[cod]
-q_table*.json
+json/*.json

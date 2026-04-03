@@ -66,10 +66,11 @@ class UiConfig:
 @dataclass(frozen=True)
 class PersistenceConfig:
     start_from_saved_q: bool = False
-    q_save_file_p2: str = "q_table_p2.json"
-    q_save_file_p3: str = "q_table_p3.json"
-    q_save_file_p4_mean: str = "q_table_p4_mean.json"
-    q_save_file_p4_var: str = "q_table_p4_var.json"
+    json_dir: str = "json"
+    q_save_file_p2: str = "json/q_table_p2.json"
+    q_save_file_p3: str = "json/q_table_p3.json"
+    q_save_file_p4_mean: str = "json/q_table_p4_mean.json"
+    q_save_file_p4_var: str = "json/q_table_p4_var.json"
 
 
 DISPLAY = DisplayConfig()
@@ -184,6 +185,7 @@ BAYES_EPSILON_DECAY = 0.98  # per second, similar to other agents
 def save_q_tables():
     """Save current Q_P2/Q_P3 and Bayesian Q_BAYES_MEAN/Q_BAYES_VAR to disk as JSON."""
     try:
+        os.makedirs(PERSISTENCE.json_dir, exist_ok=True)
         with open(PERSISTENCE.q_save_file_p2, "w") as f:
             json.dump(Q_P2, f)
         with open(PERSISTENCE.q_save_file_p3, "w") as f:
