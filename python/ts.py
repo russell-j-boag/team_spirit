@@ -65,7 +65,7 @@ class UiConfig:
 
 @dataclass(frozen=True)
 class PersistenceConfig:
-    start_from_saved_q: bool = False
+    start_from_saved_q: bool = True
     json_dir: str = "json"
     q_save_file_p2: str = "json/q_table_p2.json"
     q_save_file_p3: str = "json/q_table_p3.json"
@@ -215,7 +215,7 @@ def load_q_tables_if_enabled():
     global Q_P2, Q_P3, Q_BAYES_MEAN, Q_BAYES_VAR
 
     if not PERSISTENCE.start_from_saved_q:
-        print("Saved Q-table loading disabled; starting from fresh Q-tables.")
+        print(f"Saved Q-table loading disabled for {PERSISTENCE.json_dir}/; starting from fresh Q-tables.")
         return
 
     try:
