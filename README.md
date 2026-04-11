@@ -14,6 +14,7 @@ The game tracks score, kills, misses, accuracy, targeting behavior, and per-agen
 From R:
 
 ```r
+source("0-setup_pygame.R")  # one-time environment setup
 source("1-run.R")
 ```
 
@@ -22,6 +23,7 @@ This uses `reticulate` and the `r-pygame` conda environment to launch [`python/t
 Directly from Python:
 
 ```bash
+conda activate r-pygame
 python python/ts.py
 ```
 
